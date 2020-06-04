@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class ChangeColorScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public MoveController MoveController;
 
     public float TransparencyChanger = 0.0005f;
 
@@ -26,7 +27,8 @@ public class ChangeColorScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = MoveController.GetDistance();
+        UnityEngine.Debug.Log(moveHorizontal);
         float currentDistance = moveHorizontal + m_PrevDistance;
         if (currentDistance <= m_PrevDistance)
         {

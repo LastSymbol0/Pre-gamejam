@@ -26,15 +26,13 @@ public class MoveController : MonoBehaviour, IMoveController
         
         if (IsBeingHeld == true)
         {
-            
-            float koef = 1f;
             Vector2 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            m_DistanceMouse = Vector2.Distance(m_StartPoint.transform.localPosition, mousePos);
-            m_Distance = Vector2.Distance(m_StartPoint.transform.localPosition, new Vector2(transform.localPosition.x, transform.localPosition.y));
-            transform.position = (mousePos - new Vector2(m_StartPoint.transform.localPosition.x, m_StartPoint.transform.localPosition.y)) / (2f);
+            m_DistanceMouse = Vector2.Distance(m_StartPoint.transform.position, mousePos);
+            m_Distance = Vector2.Distance(m_StartPoint.transform.position, new Vector2(transform.position.x, transform.position.y));
+            transform.position = (mousePos - new Vector2(m_StartPoint.transform.position.x, m_StartPoint.transform.position.y)) / (2f);
         }
     }
 
@@ -50,7 +48,7 @@ public class MoveController : MonoBehaviour, IMoveController
     private void OnMouseUp()
     {
         IsBeingHeld = false;
-        //transform.position = new Vector3(m_StartPoint.transform.position.x, m_StartPoint.transform.position.y, 0);
+        transform.position = new Vector3(m_StartPoint.transform.position.x, m_StartPoint.transform.position.y, 0);
         GetComponent<Renderer>().material.color = Color.grey;
     }
 

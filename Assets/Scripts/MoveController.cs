@@ -31,9 +31,9 @@ public class MoveController : MonoBehaviour, IMoveController
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
             m_DistanceMouse = Vector2.Distance(m_StartPoint.transform.position, mousePos);
-            m_Distance = Vector2.Distance(m_StartPoint.transform.position, new Vector2(transform.position.x, transform.position.y));
             transform.position = (mousePos - new Vector2(m_StartPoint.transform.position.x, m_StartPoint.transform.position.y)) / (2f);
         }
+        m_Distance = Vector2.Distance(m_StartPoint.transform.position, new Vector2(transform.position.x, transform.position.y));
     }
 
     private void OnMouseDown()
